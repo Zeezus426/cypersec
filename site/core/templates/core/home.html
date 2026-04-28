@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Home - CyberSec{% endblock %}
+
+{% block content %}
+    <div class="hero">
+        <h1>Welcome to CyberSec</h1>
+        <p>Protecting your digital world with advanced cybersecurity solutions. Your safety is our priority.</p>
+        <a href="{% url 'contact' %}" class="btn">Get Started</a>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Our Services</h3>
+            <p>We offer comprehensive security assessments, penetration testing, and vulnerability management to keep your systems secure.</p>
+        </div>
+        <div class="card">
+            <h3>Why Choose Us</h3>
+            <p>Our team of certified experts brings years of experience in protecting businesses from cyber threats and data breaches.</p>
+        </div>
+        <div class="card">
+            <h3>24/7 Monitoring</h3>
+            <p>Round-the-clock surveillance and rapid response to ensure your infrastructure remains protected at all times.</p>
+        </div>
+    </div>
+
+    <div class="content-section" style="margin-top: 3rem;">
+        <h2>Latest Updates</h2>
+        <p>Stay informed about the latest cybersecurity trends, threat intelligence, and best practices to keep your organization safe.</p>
+        <p>Our blog and resources section provides valuable insights for IT professionals and business leaders alike.</p>
+    </div>
+{% endblock %}

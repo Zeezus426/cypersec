@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Contact Us - CyberSec{% endblock %}
+
+{% block content %}
+    <div class="hero">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team to discuss your security needs.</p>
+    </div>
+
+    <div class="grid">
+        <div class="content-section" style="grid-column: span 1;">
+            <h2>Get In Touch</h2>
+            <p>Have questions about our services? Need a security assessment? We're here to help.</p>
+
+            <div style="margin-top: 2rem;">
+                <h3 style="color: #00d4ff; margin-bottom: 0.5rem;">Email</h3>
+                <p style="color: rgba(255, 255, 255, 0.9);">info@cybersec.com</p>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #00d4ff; margin-bottom: 0.5rem;">Phone</h3>
+                <p style="color: rgba(255, 255, 255, 0.9);">+1 (555) 123-4567</p>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #00d4ff; margin-bottom: 0.5rem;">Address</h3>
+                <p style="color: rgba(255, 255, 255, 0.9);">123 Security Street<br>Tech City, TC 12345</p>
+            </div>
+        </div>
+
+        <div class="content-section" style="grid-column: span 1;">
+            <h2>Send a Message</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="content-section" style="margin-top: 2rem;">
+        <h2>Office Hours</h2>
+        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+        <p>Saturday: 10:00 AM - 4:00 PM</p>
+        <p>Sunday: Closed</p>
+    </div>
+{% endblock %}

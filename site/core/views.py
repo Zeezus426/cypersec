@@ -1,18 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
 from .forms import ContactForm
-# Create your views here.
-def home(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
 
-def contact_view(request):
+def home(request):
+    return render(request, 'core/home.html')
+
+def about(request):
+    return render(request, 'core/about.html')
+
+def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()  # Saves directly to the database
-            return redirect('success_url')  # Replace with your success URL name
+            form.save()
+            return render(request, 'core/home.html')
     else:
         form = ContactForm()
 
-    return render(request, 'contact.html', {'form': form})
+    return render(request, 'core/contact.html', {'form': form})
