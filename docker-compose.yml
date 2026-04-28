@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  cybersec-db:
+    image: postgres:16-alpine          # Pin a specific version for stability
+    container_name: cybersec           # Match your original --name
+    restart: unless-stopped            # Auto-restart on failure or reboot
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword  # ⚠️ Use env vars or secrets in prod
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cybersec_db
+    ports:
+      - "5555:5432"                    # Host:Container (connect via localhost:5555)
+    volumes:
+      - cybersec_data:/var/lib/postgresql/data  # Persist data across restarts
+    healthcheck:                       # Ensure DB is ready before dependent services start
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  cybersec_data:  # Named volume for safe, managed persistence
